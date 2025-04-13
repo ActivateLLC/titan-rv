@@ -1,1 +1,317 @@
-{{ contents of /Users/activate/CascadeProjects/titan-rv/index.html }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITAN RV - Mining Haul Truck Conversion Specialists</title>
+  <style>
+    :root {
+      --primary: #1a1a1a;
+      --secondary: #f9b234;
+      --accent: #d64541;
+      --light: #f5f5f5;
+      --dark: #333333;
+      --gradient: linear-gradient(135deg, var(--primary) 0%, #252525 100%);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    header {
+      background: var(--gradient);
+      color: white;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero {
+      min-height: 80vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      color: white;
+      text-align: center;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 2rem;
+    }
+    
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .cta-button {
+      background-color: var(--secondary);
+      color: var(--dark);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .cta-button:hover {
+      background-color: var(--accent);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--secondary);
+    }
+    
+    .logo span {
+      color: white;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      padding: 0 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links li a:hover {
+      color: var(--secondary);
+    }
+    
+    section {
+      padding: 5rem 2rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      background-color: var(--secondary);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-img {
+      height: 200px;
+      background-color: #ddd;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .card-content {
+      padding: 1.5rem;
+    }
+    
+    .card-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .card-price {
+      font-size: 1.8rem;
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    
+    .card-text {
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">TITAN<span>RV</span></div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="2ndhome.html">Expedition Vehicles</a></li>
+        <li><a href="#packages">Conversion Packages</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section class="hero" id="home" style="background-image: url('ChatGPT Image Apr 13, 2025 at 02_59_49 AM.png'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+      <h1>DOOMSDAY READY LUXURY</h1>
+      <p>Transform Mining Haul Trucks into the Ultimate Survival Vehicle</p>
+      <a href="#packages" class="cta-button">Explore Conversion Packages</a>
+    </div>
+  </section>
+  
+  <section id="packages">
+    <div class="container">
+      <h2 class="section-title">CONVERSION PACKAGES</h2>
+      <div class="grid">
+        <div class="card fade-in">
+          <div class="card-img" style="background-image: url('45cd5c4f-a26e-4507-8579-6b684a22546f.png')"></div>
+          <div class="card-content">
+            <h3 class="card-title">SENTINEL PACKAGE</h3>
+            <div class="card-price">$250,000</div>
+            <p class="card-text">Entry-level conversion with essential survival features and basic luxury amenities.</p>
+          </div>
+        </div>
+        
+        <div class="card fade-in">
+          <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+          <div class="card-content">
+            <h3 class="card-title">GUARDIAN PACKAGE</h3>
+            <div class="card-price">$450,000</div>
+            <p class="card-text">Advanced protection and comfort with enhanced off-grid capabilities.</p>
+          </div>
+        </div>
+        
+        <div class="card fade-in">
+          <div class="card-img" style="background-image: url('/api/placeholder/400/200')"></div>
+          <div class="card-content">
+            <h3 class="card-title">FORTRESS PACKAGE</h3>
+            <div class="card-price">$850,000</div>
+            <p class="card-text">Ultimate survival solution with military-grade features and unparalleled luxury.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+    
+    function handleScrollAnimation() {
+      document.querySelectorAll('.fade-in').forEach(item => {
+        if (isInViewport(item)) {
+          item.style.animationPlayState = 'running';
+        }
+      });
+    }
+    
+    // Initialize
+    window.addEventListener('scroll', handleScrollAnimation);
+    handleScrollAnimation();
+  </script>
+</body>
+</html>
