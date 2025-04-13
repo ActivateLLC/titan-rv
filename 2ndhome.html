@@ -1,1 +1,473 @@
-{{ contents of /Users/activate/CascadeProjects/titan-rv/2ndhome.html }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TITAN RV converts massive mining haul trucks into unparalleled luxury expedition vehicles. Explore our conversion packages, customization options, and begin your ultimate off-grid adventure.">
+    
+    <title>TITAN RV | Bespoke Expedition Vehicle Conversions</title>
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Best Practice Note: In a production site, this CSS should be in a separate file --- */
+
+        :root {
+            --primary: #1a1a1a; /* Deep Charcoal */
+            --secondary: #f9b234; /* Vibrant Gold */
+            --accent: #d64541; /* Strong Red */
+            --light: #f8f9fa; /* Off-white */
+            --dark: #212529; /* Near Black */
+            --text-muted: #6c757d; /* Grey for less important text */
+            --gradient: linear-gradient(135deg, var(--primary) 0%, #2b2b2b 100%);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+            --transition-speed: 0.3s;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            /* Smooth scrolling for anchor links */
+            scroll-behavior: smooth;
+            /* Base font size for easier rem calculations */
+            font-size: 16px; 
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7; /* Slightly increased line-height for readability */
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            -webkit-font-smoothing: antialiased; /* Smoother fonts on macOS/iOS */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem; /* Consistent padding */
+        }
+
+        .section {
+            padding: 6rem 0; /* Increased vertical padding */
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 900; /* Bolder title */
+            margin-bottom: 4rem; /* More space below title */
+            position: relative;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px; /* Lowered the underline */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px; /* Slightly shorter */
+            height: 4px; /* Thinner */
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .cta-button {
+            background-color: var(--secondary);
+            color: var(--primary); /* Better contrast */
+            padding: 0.9rem 2.2rem; /* Slightly adjusted padding */
+            border: none;
+            border-radius: 50px; /* Pill shape */
+            font-weight: 700; /* Bolder */
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cta-button:hover,
+        .cta-button:focus { /* Added focus style */
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-4px); /* More lift */
+            box-shadow: var(--shadow-md);
+            outline: none; /* Remove default outline */
+        }
+
+        /* --- Header & Navigation --- */
+        .site-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 0;
+            position: sticky; /* Sticky header */
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem; /* Align with container padding */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 900; /* Extra bold */
+            color: var(--secondary);
+            text-decoration: none; /* Ensure logo is not underlined if wrapped in <a> */
+        }
+
+        .logo span {
+            color: white;
+            font-weight: 700; /* Slightly less bold */
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            transition: color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+            border-radius: 5px;
+            position: relative; /* For potential underline effect */
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a:focus {
+            color: var(--secondary);
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
+            outline: none;
+        }
+        
+        /* Mobile Navigation Toggle */
+        .nav-toggle {
+            display: none; /* Hidden by default */
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 90vh; /* Slightly taller */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('ChatGPT Image Apr 12, 2025, 06_49_14 PM.png'); /* Overlay using gradient */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* --- Expedition Vehicles Section --- */
+        .expedition-vehicles {
+            background-color: var(--light);
+            padding: 6rem 0;
+        }
+
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .vehicle-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .vehicle-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .vehicle-content {
+            padding: 1.5rem;
+        }
+
+        .vehicle-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .vehicle-description {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .vehicle-price {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--accent);
+        }
+
+        /* --- Footer --- */
+        .site-footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* --- Responsive Design --- */
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .nav-links li {
+                margin-bottom: 0.5rem;
+            }
+
+            .nav-toggle {
+                display: block;
+                align-self: flex-end;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 1rem;
+            }
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">TITAN<span>RV</span></a>
+            <button class="nav-toggle" aria-label="Toggle Navigation">
+                ☰
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#expedition-vehicles">Expedition Vehicles</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Expedition Vehicle Conversions</h1>
+            <p>Transform Massive Mining Haul Trucks into Ultimate Survival and Luxury Off-Grid Vehicles</p>
+            <a href="#expedition-vehicles" class="cta-button">Explore Our Fleet</a>
+        </div>
+    </section>
+
+    <section id="expedition-vehicles" class="expedition-vehicles section">
+        <div class="container">
+            <h2 class="section-title">Our Expedition Vehicles</h2>
+            <div class="vehicle-grid">
+                <div class="vehicle-card fade-in">
+                    <div class="vehicle-image" style="background-image: url('ChatGPT Image Apr 12, 2025, 06_49_14 PM.png')"></div>
+                    <div class="vehicle-content">
+                        <h3 class="vehicle-title">Titan Explorer</h3>
+                        <p class="vehicle-description">Ultimate off-grid survival vehicle with military-grade protection and luxury amenities.</p>
+                        <div class="vehicle-price">Starting at $750,000</div>
+                    </div>
+                </div>
+
+                <div class="vehicle-card fade-in">
+                    <div class="vehicle-image" style="background-image: url('ChatGPT Image Apr 13, 2025 at 02_59_49 AM.png')"></div>
+                    <div class="vehicle-content">
+                        <h3 class="vehicle-title">Titan Nomad</h3>
+                        <p class="vehicle-description">Designed for extended wilderness expeditions with advanced self-sufficiency systems.</p>
+                        <div class="vehicle-price">Starting at $950,000</div>
+                    </div>
+                </div>
+
+                <div class="vehicle-card fade-in">
+                    <div class="vehicle-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                    <div class="vehicle-content">
+                        <h3 class="vehicle-title">Titan Apex</h3>
+                        <p class="vehicle-description">Our most advanced expedition vehicle with cutting-edge technology and unparalleled comfort.</p>
+                        <div class="vehicle-price">Starting at $1,250,000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">TITAN<span>RV</span></div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="#expedition-vehicles">Vehicles</a>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function handleScrollAnimation() {
+            document.querySelectorAll('.fade-in').forEach(item => {
+                if (isInViewport(item)) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation();
+
+        // Mobile Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
