@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: titan-rv
+    env: static
+    buildCommand: null  # No build needed for simple static site
+    staticPublishPath: .  # Publish from root directory
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=86400  # 24-hour cache
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: RENDER_EXTERNAL_URL
+        value: https://titanrv.com
