@@ -1,0 +1,15 @@
+[.vscode/]
+node_modules/
+dist/
+build/
+.env
+*.log
+.DS_Store
+images/*.psd
+images/*.xcf
+# Exclude large raw assets
+*.zip
+*.tar.gz
+*.7z
+*.bak
+*.tmp
