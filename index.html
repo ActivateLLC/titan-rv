@@ -1,230 +1,1125 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITANRV - Forge Your Fortress</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+    <meta name="description" content="TITAN RV converts massive mining haul trucks into unparalleled luxury expedition vehicles. Explore our conversion packages, customization options, and begin your ultimate off-grid adventure.">
+    
+    <title>TITAN RV | Bespoke Expedition Vehicle Conversions</title>
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+
     <style>
-        body, html {
-            height: 100%;
+        /* --- Best Practice Note: In a production site, this CSS should be in a separate file --- */
+
+        :root {
+            --primary: #1a1a1a; /* Deep Charcoal */
+            --secondary: #f9b234; /* Vibrant Gold */
+            --accent: #d64541; /* Strong Red */
+            --light: #f8f9fa; /* Off-white */
+            --dark: #212529; /* Near Black */
+            --text-muted: #6c757d; /* Grey for less important text */
+            --gradient: linear-gradient(135deg, var(--primary) 0%, #2b2b2b 100%);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+            --transition-speed: 0.3s;
+        }
+
+        *,
+        *::before,
+        *::after {
             margin: 0;
-            font-family: 'Montserrat', Arial, sans-serif;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .hero-bg {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('images/trucks/ChatGPT Image Apr 13, 2025 at 02_59_49 AM.png') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+
+        html {
+            /* Smooth scrolling for anchor links */
+            scroll-behavior: smooth;
+            /* Base font size for easier rem calculations */
+            font-size: 16px; 
         }
-        .header {
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7; /* Slightly increased line-height for readability */
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            -webkit-font-smoothing: antialiased; /* Smoother fonts on macOS/iOS */
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem; /* Consistent padding */
+        }
+
+        .section {
+            padding: 6rem 0; /* Increased vertical padding */
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 900; /* Bolder title */
+            margin-bottom: 4rem; /* More space below title */
+            position: relative;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px; /* Lowered the underline */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px; /* Slightly shorter */
+            height: 4px; /* Thinner */
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .cta-button {
+            background-color: var(--secondary);
+            color: var(--primary); /* Better contrast */
+            padding: 0.9rem 2.2rem; /* Slightly adjusted padding */
+            border: none;
+            border-radius: 50px; /* Pill shape */
+            font-weight: 700; /* Bolder */
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cta-button:hover,
+        .cta-button:focus { /* Added focus style */
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-4px); /* More lift */
+            box-shadow: var(--shadow-md);
+            outline: none; /* Remove default outline */
+        }
+
+        /* --- Header & Navigation --- */
+        .site-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 0;
+            position: sticky; /* Sticky header */
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 60px 0 60px;
-            background: rgba(20,20,20,0.85);
+            padding: 0 1.5rem; /* Align with container padding */
+            max-width: 1200px;
+            margin: 0 auto;
         }
+
         .logo {
             font-size: 2.2rem;
-            font-weight: bold;
-            color: #FFC72C;
-            letter-spacing: 2px;
+            font-weight: 900; /* Extra bold */
+            color: var(--secondary);
+            text-decoration: none; /* Ensure logo is not underlined if wrapped in <a> */
         }
+
         .logo span {
-            color: #fff;
+            color: white;
+            font-weight: 700; /* Slightly less bold */
         }
-        .nav {
+
+        .nav-links {
             display: flex;
-            gap: 36px;
+            list-style: none;
         }
-        .nav a {
-            color: #fff;
+
+        .nav-links li a {
+            color: white;
             text-decoration: none;
-            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
             font-weight: 500;
-            transition: color 0.2s;
+            transition: color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+            border-radius: 5px;
+            position: relative; /* For potential underline effect */
         }
-        .nav a:hover {
-            color: #FFC72C;
+
+        .nav-links li a:hover,
+        .nav-links li a:focus {
+            color: var(--secondary);
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
+            outline: none;
         }
-        .center-content {
-            flex: 1;
+        
+        /* Mobile Navigation Toggle */
+        .nav-toggle {
+            display: none; /* Hidden by default */
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 90vh; /* Slightly taller */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('ChatGPT Image Apr 12, 2025, 06_49_14 PM.png'); /* Overlay using gradient */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            z-index: 1;
+            /* Added subtle animation */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem; /* Larger */
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.6rem; /* Larger */
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            max-width: 700px; /* Control line length */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Generic Grid & Card Styles --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem; /* Slightly increased gap */
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px; /* More rounded */
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            display: flex; /* Flex column for better content control */
+            flex-direction: column;
+            height: 100%; /* Ensure full height of the card */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 500px; /* Increased height */
+            background-size: contain; /* Changed to contain to show full image */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f8f9fa; /* Light background to ensure visibility */
+        }
+
+        .card-content {
+            padding: 2rem;
+            flex-grow: 1; /* Allows content to fill space */
             display: flex;
             flex-direction: column;
-            justify-content: center;
+        }
+
+        .card-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .card-text {
+          margin-bottom: 1.5rem;
+          flex-grow: 1; /* Push buttons/features down */
+        }
+
+        .card-price {
+            font-size: 2rem; /* Bigger price */
+            color: var(--accent);
+            font-weight: 700; /* Bolder price */
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list { /* Renamed from package-features for generality */
+            list-style: none;
+            margin-bottom: 1.5rem;
+            padding-left: 0; /* Remove default padding */
+        }
+
+        .feature-list li {
+            padding: 0.6rem 0; /* Increased padding */
+            border-bottom: 1px solid #eee;
+            display: flex; /* Align icon and text */
             align-items: center;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "✓"; /* Checkmark */
+            color: var(--secondary);
+            margin-right: 0.8rem; /* More space */
+            font-weight: bold;
+            font-size: 1.2rem; /* Larger checkmark */
+        }
+        
+        .card .cta-button {
+            margin-top: auto; /* Push button to bottom of card */
+            align-self: flex-start; /* Align button left */
+        }
+
+        /* --- Specific Section Styles --- */
+        #intro h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        #intro p {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+        #intro .grid > div { /* Add padding within intro grid items */
+           padding: 1rem;
+        }
+
+        /* Package / Add-on Specifics */
+        .packages, .add-ons {
+            background-color: #fff; /* White background for these sections */
+        }
+        .customization-note {
+            text-align: center;
+            margin-top: 4rem; /* More space */
+            background-color: var(--light); /* Use theme light color */
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-sm);
+        }
+        .customization-note h3 {
+             font-size: 1.8rem;
+             margin-bottom: 1rem;
+             color: var(--primary);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: var(--primary);
+            color: white;
+        }
+        .benefits .section-title { color: white; }
+        .benefits .section-title::after { background-color: var(--secondary); }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            gap: 1.5rem; /* Gap between icon and content */
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem; /* Larger icon */
+            color: var(--secondary);
+            flex-shrink: 0; /* Prevent icon shrinking */
+            width: 50px; /* Fixed width */
             text-align: center;
         }
-        .main-title {
-            font-size: 4.5rem;
+
+        .benefit-content h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: #fff;
-            margin-bottom: 18px;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.7);
         }
-        .subtitle {
-            font-size: 1.35rem;
-            color: #fff;
-            font-weight: 400;
-            margin-bottom: 38px;
-            max-width: 700px;
-            text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+        .benefit-content p {
+            color: #e0e0e0; /* Lighter grey for paragraph text */
+            margin-bottom: 0.5rem;
         }
-        .cta-btn {
-            background: #FFC72C;
-            color: #222;
-            font-size: 1.25rem;
-            font-weight: bold;
-            padding: 18px 48px;
-            border: none;
-            border-radius: 30px;
+        .benefit-content strong {
+            color: var(--secondary); /* Highlight cost */
+        }
+
+        /* Performance Section */
+        #performance ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        #performance li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #eee;
+        }
+        #performance li strong {
+            color: var(--primary);
+            min-width: 150px; /* Align values */
+            display: inline-block;
+        }
+        #performance h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        /* FAQ Section - Accordion */
+        .accordion {
+            margin-bottom: 1rem;
+            border: 1px solid #e0e0e0; /* Softer border */
+            border-radius: 8px; /* Slightly rounded */
+            overflow: hidden; /* Ensure content clip */
+            background-color: white;
+        }
+
+        .accordion-header {
+            background: #f8f9fa; /* Use theme light color */
+            padding: 1.2rem 1.5rem; /* More padding */
             cursor: pointer;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
-            transition: background 0.2s, color 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700; /* Bolder header */
+            font-size: 1.1rem;
+            transition: background-color var(--transition-speed) ease;
         }
-        .cta-btn:hover {
-            background: #e6b100;
-            color: #fff;
+        .accordion-header:hover {
+            background-color: #e9ecef; /* Subtle hover */
         }
-        @media (max-width: 800px) {
-            .main-title { font-size: 2.5rem; }
-            .header { padding: 18px 20px 0 20px; }
-            .subtitle { font-size: 1rem; }
+
+        .accordion-header .icon { /* Using a span for the icon */
+            transition: transform var(--transition-speed) ease;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Smoother transition */
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        .accordion-content p {
+            padding: 1.5rem 0; /* Add padding only when open */
+        }
+
+        .accordion.active .accordion-header .icon {
+            transform: rotate(45deg); /* Rotate '+' to 'x' */
+        }
+
+        .accordion.active .accordion-content {
+            max-height: 1000px; /* Sufficient max height */
+            /* Padding applied via p tag */
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--light);
+        }
+
+        .testimonial {
+            text-align: center;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.25rem; /* Slightly larger */
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+            position: relative;
+            padding: 0 1rem; /* Add padding */
+            max-width: 600px; /* Prevent very long lines */
+        }
+        /* Adding quote marks */
+        .testimonial-text::before {
+             content: '“';
+             position: absolute;
+             left: -10px;
+             top: -10px;
+             font-size: 4rem;
+             color: var(--secondary);
+             opacity: 0.3;
+        }
+        .testimonial-text::after {
+             content: '”';
+             position: absolute;
+             right: -10px;
+             bottom: -20px;
+             font-size: 4rem;
+             color: var(--secondary);
+             opacity: 0.3;
+        }
+
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: auto; /* Push author down if text varies */
+        }
+        .testimonial-author::before {
+            content: "— "; /* Em dash before author */
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--gradient);
+            color: white;
+        }
+        .contact .section-title { color: white; }
+        .contact .section-title::after { background-color: var(--secondary); }
+
+        .contact-form {
+            max-width: 700px; /* Slightly wider form */
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1); /* Subtle background */
+            padding: 3rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem; /* More space between fields */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.7rem; /* More space below label */
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 1rem; /* More padding */
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Lighter border */
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: rgba(0, 0, 0, 0.2); /* Darker input background */
+            color: white;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        input::placeholder, textarea::placeholder { /* Style placeholder text */
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(249, 178, 52, 0.3); /* Focus ring */
+        }
+
+        textarea {
+            height: 180px; /* Taller textarea */
+            resize: vertical;
+        }
+        
+        .contact-form .cta-button { /* Style submit button */
+           width: 100%;
+           padding: 1rem;
+           font-size: 1.2rem;
+        }
+
+        /* --- Media Sections (Video/Image) --- */
+        .media-container {
+            max-width: 1000px; /* Limit width */
+            margin: 4rem auto; /* Add spacing */
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border-radius: 15px;
+            overflow: hidden; /* Clip corners */
+        }
+
+        .responsive-media { /* Class for both video and image */
+            display: block; /* Remove extra space below */
+            width: 100%;
+            height: auto;
+        }
+        
+        /* --- Footer --- */
+        .site-footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.7); /* Lighter text */
+            text-align: center;
+            padding: 3rem 1.5rem;
+            font-size: 0.9rem;
+        }
+        .site-footer p {
+            margin-bottom: 0.5rem;
+        }
+        .site-footer strong {
+            color: var(--secondary); /* Highlight TITAN RV in footer */
+        }
+
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Class added by Intersection Observer */
+        .fade-in-element {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(20px);
+        }
+
+        .fade-in-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 992px) {
+             .hero h1 { font-size: 3.5rem; }
+             .hero p { font-size: 1.4rem; }
+             .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } /* Adjust minmax */
+        }
+        
+        @media (max-width: 768px) {
+            html { font-size: 15px; } /* Adjust base font size */
+            .section { padding: 4rem 0; }
+            .section-title { font-size: 2.2rem; margin-bottom: 3rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.2rem; }
+            .grid { grid-template-columns: 1fr; } /* Stack grid items */
+            
+            /* Mobile Navigation */
+            .nav-toggle {
+                display: block; /* Show hamburger */
+                z-index: 1001; /* Above nav links */
+                position: relative; /* Needed for potential animation */
+            }
+            .nav-links {
+                position: fixed; /* Fixed position menu */
+                top: 0;
+                right: -100%; /* Start off-screen */
+                width: 70%; /* Menu width */
+                height: 100vh;
+                background: var(--primary); /* Solid background */
+                flex-direction: column;
+                padding: 6rem 2rem 2rem; /* Adjust padding */
+                transition: right var(--transition-speed) ease-in-out;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+            .nav-links.active {
+                right: 0; /* Slide in */
+            }
+            .nav-links li {
+                margin-bottom: 1.5rem; /* Space out links */
+            }
+            .nav-links li a {
+                font-size: 1.2rem; /* Larger font size */
+            }
+            .contact-form { padding: 2rem; }
+        }
+
+        @media (max-width: 576px) {
+             .hero h1 { font-size: 2.2rem; letter-spacing: 1px; }
+             .hero p { font-size: 1.1rem; }
+             .cta-button { font-size: 1rem; padding: 0.8rem 1.8rem; }
+             .section-title { font-size: 1.8rem; }
+             .card-content { padding: 1.5rem; }
+             .card-title { font-size: 1.4rem; }
+             .card-price { font-size: 1.8rem; }
+             .testimonial-text { font-size: 1.1rem; }
+             .testimonial-text::before, .testimonial-text::after { font-size: 3rem; }
+             .contact-form { padding: 1.5rem; }
+             .nav-links { width: 85%; } /* Wider menu on small screens */
+        }
+
     </style>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <div class="hero-bg">
-        <div class="header">
-            <div class="logo">TITAN<span>RV</span></div>
-            <nav class="nav">
-                <a href="#home">Home</a>
-                <a href="#vehicles">Vehicles</a>
-                <a href="#customization">Customization</a>
-                <a href="#upgrades">Upgrades</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </div>
-        <div class="center-content">
-            <div class="main-title">FORGE YOUR<br>FORTRESS</div>
-            <div class="subtitle">
-                Pioneering the conversion of industrial titans into the ultimate self-reliant luxury expedition vehicles.
-            </div>
-            <button class="cta-btn">DISCOVER YOUR TITAN</button>
-        </div>
-    </div>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>TITAN RV</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#conversions">Conversions</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="site-header">
+        <nav class="navbar container">
+            <a href="#home" class="logo">TITAN<span>RV</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#packages">Vehicles</a></li>
+                <li><a href="#add-ons">Customization</a></li>
+                <li><a href="#features">Upgrades</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                 ☰ </button>
+        </nav>
     </header>
-    <section class="hero">
-        <div class="container">
-            <h2>Transforming Mining Haul Trucks into Luxury Expedition Vehicles</h2>
-            <p>Ultimate survival and luxury off-grid vehicles</p>
-            <a href="#contact" class="cta-button">Inquire About Conversions</a>
-        </div>
-    </section>
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About TITAN RV</h2>
-            <p>TITAN RV specializes in converting massive mining haul trucks into ultimate survival and luxury off-grid vehicles. Our conversions combine industrial durability with premium amenities for unparalleled expeditions.</p>
-        </div>
-    </section>
-    <section id="conversions" class="conversions">
-        <div class="container">
-            <h2>Our Conversions</h2>
-            <div class="conversion-types">
-                <div class="conversion">
-                    <h3>Expedition Model</h3>
-                    <p>Built for extreme off-grid adventures with extended range capabilities.</p>
-                </div>
-                <div class="conversion">
-                    <h3>Luxury Model</h3>
-                    <p>The ultimate in comfort and luxury for discerning travelers seeking unique experiences.</p>
-                </div>
-                <div class="conversion">
-                    <h3>Custom Design</h3>
-                    <p>Fully customized builds tailored to your specific requirements and preferences.</p>
+
+    <main> <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Forge Your Fortress</h1> <p>Pioneering the conversion of industrial titans into the ultimate self-reliant luxury expedition vehicles.</p>
+                <a href="#packages" class="cta-button">Discover Your Titan</a>
+            </div>
+        </section>
+
+        <section id="intro" class="section">
+            <div class="container">
+                <h2 class="section-title">Beyond Boundaries: Ultimate Off-Grid Living</h2>
+                <div class="grid">
+                    <div class="fade-in-element">
+                        <h3>Why a Haul Truck?</h3>
+                        <p>Engineered for extremes, mining haul trucks offer unparalleled structural integrity, immense payload capacity, and a commanding presence. We harness this raw power, transforming industrial might into your bespoke mobile sanctuary.</p>
+                        <p>TITAN RV conversions deliver uncompromising luxury and self-sufficiency, ready to conquer any terrain and navigate unforeseen futures. This is vehicular independence, redefined.</p>
+                    </div>
+                    <div class="fade-in-element">
+                        <h3>Unrivalled Capability</h3>
+                        <p>Our conversions meticulously integrate advanced living systems without compromising the vehicle's legendary toughness. Experience expansive interiors, state-of-the-art power solutions, and fortified security, all built upon a foundation designed to endure.</p>
+                        <p>From hybrid power innovations enhancing efficiency to optional defensive systems, TITAN RV provides the definitive platform for exploration, preparedness, and unparalleled freedom.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Premium Features</h2>
-            <div class="feature-list">
-                <div class="feature">
-                    <h3>All-Terrain Capability</h3>
-                    <p>Navigate virtually any landscape with industrial-grade suspension and propulsion.</p>
+        </section>
+
+        <section id="packages" class="section packages">
+            <div class="container">
+                <h2 class="section-title">Available Expedition Platforms</h2>
+                <div class="grid"> <div class="card available-truck fade-in-element">
+                         <div class="card-img" style="background-image: url('45cd5c4f-a26e-4507-8579-6b684a22546f.png');" role="img" aria-label="TITAN RV Base Conversion Exterior" data-component-name="<div />"></div>
+                         <div class="card-content">
+                            <h3 class="card-title">TITAN RV: Pioneer Series</h3>
+                            <p class="card-price">$1,250,000+</p> <p class="card-text">A turnkey solution based on the robust Caterpillar 793F platform, expertly converted into a foundational luxury expedition vehicle.</p>
+                            <ul class="feature-list">
+                                <li>Sourced & Inspected Caterpillar 793F Haul Truck</li>
+                                <li>600 sq ft Bespoke Living Space</li>
+                                <li>Advanced Off-Grid Power System</li>
+                                <li>Comprehensive Mechanical Overhaul</li>
+                                <li>Custom Exterior Finish</li>
+                                <li>Initial Maintenance Package</li>
+                            </ul>
+                            <a href="#contact" class="cta-button">Inquire Now</a>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+        
+        <section id="add-ons" class="section add-ons">
+             <div class="container">
+                 <h2 class="section-title">Bespoke Customization Modules</h2>
+                 <div class="grid"> <div class="card add-on-card fade-in-element">
+                        <div class="card-content">
+                            <h3 class="card-title">Enhanced Power Module</h3>
+                            <p class="card-price">$75,000+</p>
+                            <ul class="feature-list">
+                                <li>Expandable Solar Array (Up to 15kW)</li>
+                                <li>High-Capacity Lithium Battery Bank</li>
+                                <li>Integrated Diesel Generator Backup</li>
+                                <li>Smart Energy Management Interface</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card add-on-card fade-in-element">
+                        <div class="card-content">
+                            <h3 class="card-title">Executive Interior Suite</h3>
+                            <p class="card-price">$125,000+</p>
+                            <ul class="feature-list">
+                                <li>Premium Natural Material Finishes</li>
+                                <li>Full Smart Home Automation</li>
+                                <li>Chef-Grade Appliances</li>
+                                <li>Tailored Furnishings & Layout</li>
+                                <li>Multi-Zone Climate Control</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card add-on-card fade-in-element">
+                        <div class="card-content">
+                            <h3 class="card-title">All-Terrain Dominance Package</h3>
+                            <p class="card-price">$150,000+</p>
+                            <ul class="feature-list">
+                                <li>Upgraded Adaptive Suspension</li>
+                                <li>Reinforced Run-Flat Tire System</li>
+                                <li>Heavy-Duty Recovery Systems</li>
+                                <li>Enhanced Chassis Protection</li>
+                                <li>Advanced Traction/Stability Control</li>
+                                <li>Integrated Winch & Recovery Gear</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card add-on-card fade-in-element">
+                        <div class="card-content">
+                            <h3 class="card-title">Global Communications Suite</h3>
+                            <p class="card-price">$50,000+</p>
+                            <ul class="feature-list">
+                                <li>High-Bandwidth Satellite Internet</li>
+                                <li>Long-Range Encrypted Radio</li>
+                                <li>Multi-Constellation GPS</li>
+                                <li>Cellular Signal Enhancement</li>
+                                <li>Secure Communication Channels</li>
+                            </ul>
+                         </div>
+                    </div>
+                 </div>
+                
+                <div class="customization-note fade-in-element">
+                    <h3>Your Vision, Realized</h3>
+                    <p>These modules represent starting points. Our specialty lies in fully bespoke conversions, tailored precisely to your unique requirements and aspirations. Let's build your dream expedition vehicle together.</p>
+                    <a href="#contact" class="cta-button">Schedule Consultation</a>
                 </div>
-                <div class="feature">
-                    <h3>Off-Grid Power</h3>
-                    <p>Advanced solar and alternative energy systems for complete autonomy.</p>
-                </div>
-                <div class="feature">
-                    <h3>Luxury Interiors</h3>
-                    <p>Premium materials and craftsmanship to create an unparalleled living experience.</p>
-                </div>
-                <div class="feature">
-                    <h3>Extended Range</h3>
-                    <p>Massive fuel capacity for journeys to the most remote destinations.</p>
+             </div>
+        </section>
+
+        <section id="features" class="section benefits">
+            <div class="container">
+                <h2 class="section-title">Advanced System Upgrades</h2>
+                <div class="grid"> <div class="benefit-item fade-in-element">
+                        <div class="benefit-icon">⚡</div>
+                        <div class="benefit-content">
+                            <h3>Hybrid Power System</h3>
+                            <p>Proprietary kinetic energy recovery system significantly improves fuel efficiency (up to 30%) and provides supplemental power. Features regenerative braking and intelligent energy distribution.</p>
+                            <p><strong>Investment:</strong> $150,000 - $275,000+</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item fade-in-element">
+                        <div class="benefit-icon">🔋</div>
+                        <div class="benefit-content">
+                            <h3>Full Electric Powertrain</h3>
+                            <p>Embrace silent, zero-emission operation with a complete electric conversion. Includes substantial battery capacity, integrated solar charging, and high-speed charging capability.</p>
+                            <p><strong>Investment:</strong> $350,000 - $500,000+</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item fade-in-element">
+                        <div class="benefit-icon">☀️</div>
+                        <div class="benefit-content">
+                            <h3>Deployable Solar Arrays</h3>
+                            <p>Maximize off-grid endurance with high-yield, automated solar deployment systems. Available in scalable configurations (5kW-20kW+) to power onboard systems.</p>
+                            <p><strong>Investment:</strong> $35,000 - $85,000+</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item fade-in-element">
+                        <div class="benefit-icon">🛡️</div>
+                        <div class="benefit-content">
+                            <h3>Security & Defense Enhancements</h3>
+                            <p>From reinforced structures and ballistic materials to advanced surveillance and non-lethal countermeasures, fortify your vehicle against potential threats.</p>
+                            <p><strong>Investment:</strong> $75,000 - $250,000+</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item fade-in-element">
+                        <div class="benefit-icon">💧</div>
+                        <div class="benefit-content">
+                            <h3>Atmospheric Water Generation & Recycling</h3>
+                            <p>Achieve unparalleled water autonomy with systems that harvest atmospheric moisture and advanced grey/black water recycling, providing thousands of gallons of potable water.</p>
+                            <p><strong>Investment:</strong> $45,000 - $120,000+</p> </div>
+                    </div>
+
+                    <div class="benefit-item fade-in-element">
+                        <div class="benefit-icon">🛰️</div>
+                        <div class="benefit-content">
+                            <h3>Command & Control Comms</h3>
+                            <p>Maintain global connectivity and situational awareness with integrated satellite links, encrypted multi-band radios, and tactical data network capabilities.</p>
+                            <p><strong>Investment:</strong> $25,000 - $75,000+</p> </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>Interested in learning more about TITAN RV conversions? Get in touch with our team.</p>
-            <form action="#" method="POST" id="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
+        </section>
+        
+        <section id="faq" class="section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="accordion fade-in-element">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-1">
+                        What is the typical cost of the base vehicle?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content" id="faq-content-1" role="region" aria-labelledby="faq-header-1">
+                        <p>Sourcing a suitable used mining haul truck (e.g., Caterpillar 793/797, Komatsu 830E/930E) typically ranges from $500,000 to over $3 million, contingent on model, age, operational hours, and condition. We facilitate sourcing or can convert your existing asset.</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+
+                <div class="accordion fade-in-element">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-2">
+                       What are the licensing requirements?
+                       <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content" id="faq-content-2" role="region" aria-labelledby="faq-header-2">
+                       <p>Operating a TITAN RV generally requires a Commercial Driver's License (CDL) with specific endorsements due to the vehicle's size and weight. Regulations vary by jurisdiction. We offer consultation and can arrange specialized driver training programs.</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                <div class="accordion fade-in-element">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-3">
+                        How long does the conversion process take?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content" id="faq-content-3" role="region" aria-labelledby="faq-header-3">
+                        <p>Timelines vary based on complexity. Foundational conversions typically require 8-12 months. Highly bespoke projects with advanced systems integration can extend to 18-24 months or more from commission to delivery.</p>
+                    </div>
                 </div>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 TITAN RV. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" target="_blank">Facebook</a>
-                <a href="#" target="_blank">Instagram</a>
-                <a href="#" target="_blank">LinkedIn</a>
+                
+                <div class="accordion fade-in-element">
+                     <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-4">
+                        What maintenance is involved?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content" id="faq-content-4" role="region" aria-labelledby="faq-header-4">
+                         <p>While built on platforms designed for extreme durability (50,000+ operational hours), regular preventative maintenance is crucial. We provide detailed service protocols and offer comprehensive global maintenance and support packages starting from $25,000 annually.</p> </div>
+                </div>
+                 
+                 <div class="accordion fade-in-element">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-5">
+                        Are there operational restrictions?
+                        <span class="icon">+</span>
+                     </button>
+                    <div class="accordion-content" id="faq-content-5" role="region" aria-labelledby="faq-header-5">
+                         <p>Public road access is subject to local regulations regarding oversized vehicles. TITAN RVs excel on private land, designated off-highway routes, and in remote environments. We provide guidance on legal operation and permit acquisition assistance.</p>
+                     </div>
+                 </div>
+
+                <div class="accordion fade-in-element">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="faq-content-6">
+                        Is financing available?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content" id="faq-content-6" role="region" aria-labelledby="faq-header-6">
+                        <p>Yes, we collaborate with specialized financial institutions experienced in high-value asset financing. Options are available for qualified clients, typically involving tailored terms based on the project scope and client profile.</p>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <section id="testimonials" class="section testimonials">
+            <div class="container">
+                <h2 class="section-title">Client Perspectives</h2>
+                <div class="grid"> <div class="testimonial fade-in-element">
+                        <blockquote class="testimonial-text">
+                            "The TITAN RV isn't merely a vehicle; it's a paradigm shift in personal sovereignty. The engineering, luxury, and sheer capability provide unparalleled peace of mind in an uncertain world."
+                        </blockquote>
+                        <div class="testimonial-author">J. Reynolds, Technology Founder</div>
+                    </div>
+
+                    <div class="testimonial fade-in-element">
+                        <blockquote class="testimonial-text">
+                            "Exceeded every expectation. The hybrid system's efficiency is remarkable, and the interior finish rivals bespoke yachts. TITAN RV delivered a true land-based superyacht."
+                        </blockquote>
+                        <div class="testimonial-author">A. Chen, Private Equity Principal</div>
+                    </div>
+
+                    <div class="testimonial fade-in-element">
+                        <blockquote class="testimonial-text">
+                             "From the initial design consultation to final handover, the process was meticulous. We've traversed remote landscapes for months, experiencing total autonomy and comfort. An engineering marvel."
+                        </blockquote>
+                        <div class="testimonial-author">Col. (Ret.) M. Sterling, Security Consultant</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2 class="section-title">Begin Your TITAN Journey</h2>
+                <form class="contact-form fade-in-element" action="#" method="POST"> <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required> </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required> </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest">Area of Interest</label>
+                        <select id="interest" name="interest" required> <option value="" disabled selected>Select primary interest...</option>
+                            <option value="pioneer">Pioneer Series Vehicle</option>
+                            <option value="custom">Fully Bespoke Conversion</option>
+                            <option value="upgrades">System Upgrades Consultation</option>
+                            <option value="general">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Vision & Requirements</label>
+                        <textarea id="message" name="message" placeholder="Please provide details about your desired configuration, timeline, or any specific questions." required></textarea> </div>
+
+                    <button type="submit" class="cta-button">Submit Inquiry</button>
+                </form>
+            </div>
+        </section>
+
+        <div class="media-container fade-in-element">
+            <img src="ChatGPT Image Apr 12, 2025, 06_49_14 PM.png" alt="TITAN RV Expedition Vehicle in a scenic landscape" class="responsive-media" loading="lazy">
         </div>
+        
+        <div class="media-container fade-in-element">
+             <video controls class="responsive-media" preload="metadata" loading="lazy"> <source src="c2e32fbaedf94524b7a137fd46ab79a3.mp4" type="video/mp4">
+                 Your browser does not support the video tag. Please <a href="c2e32fbaedf94524b7a137fd46ab79a3.mp4">download the video</a>.
+             </video>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+             <p>&copy; 2025 <strong>TITAN RV</strong> | Bespoke Haul Truck Conversions</p>
+            <p>Engineering the Future of Self-Reliant Expedition Vehicles.</p>
+            </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+        /* --- Best Practice Note: In a production site, this JS should be in a separate file --- */
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Mobile Navigation Toggle ---
+            const navToggle = document.getElementById('nav-toggle');
+            const navLinks = document.getElementById('nav-links');
+
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const isExpanded = navLinks.classList.contains('active');
+                    navToggle.setAttribute('aria-expanded', isExpanded);
+                    // Optional: Change icon on toggle
+                    navToggle.innerHTML = isExpanded ? '&times;' : '☰'; 
+                });
+
+                // Close menu when a link is clicked (optional)
+                 navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                       if (navLinks.classList.contains('active')) {
+                          navLinks.classList.remove('active');
+                          navToggle.setAttribute('aria-expanded', 'false');
+                          navToggle.innerHTML = '☰';
+                       }
+                    });
+                 });
+            }
+
+
+            // --- Accordion Functionality ---
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordion = header.parentElement;
+                    const content = header.nextElementSibling; // Assumes content is immediate sibling
+                    const icon = header.querySelector('.icon');
+                    const isActive = accordion.classList.contains('active');
+
+                    // Optional: Close other open accordions
+                    // document.querySelectorAll('.accordion.active').forEach(activeAccordion => {
+                    //    if (activeAccordion !== accordion) {
+                    //        activeAccordion.classList.remove('active');
+                    //        activeAccordion.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                    //        activeAccordion.querySelector('.accordion-header .icon').textContent = '+';
+                    //        activeAccordion.querySelector('.accordion-content').style.maxHeight = null; // Use null instead of 0 for transition
+                    //    }
+                    // });
+
+                    accordion.classList.toggle('active');
+                    header.setAttribute('aria-expanded', !isActive);
+                    
+                    if (!isActive) {
+                        // Set max-height for opening animation
+                        // content.style.maxHeight = content.scrollHeight + "px"; // Use scrollHeight for dynamic height
+                        icon.textContent = '-'; // Use textContent for icon change
+                    } else {
+                        // content.style.maxHeight = null; // Collapse
+                        icon.textContent = '+';
+                    }
+                });
+                 
+                // Ensure content ID matches aria-controls
+                const content = header.nextElementSibling;
+                if (content) {
+                    const id = `faq-content-${Math.random().toString(36).substr(2, 9)}`; // Generate unique ID
+                    content.id = id;
+                    header.setAttribute('aria-controls', id);
+                }
+
+            });
+
+
+            // --- Intersection Observer for Fade-In Animations ---
+            const fadeElements = document.querySelectorAll('.fade-in-element');
+
+            if ("IntersectionObserver" in window) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target); // Stop observing once visible
+                        }
+                    });
+                }, {
+                    rootMargin: '0px', // Adjust margin if needed
+                    threshold: 0.1 // Trigger when 10% is visible
+                });
+
+                fadeElements.forEach(el => observer.observe(el));
+            } else {
+                 // Fallback for older browsers (simply make them visible)
+                 fadeElements.forEach(el => el.classList.add('is-visible'));
+            }
+
+        });
+    </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
