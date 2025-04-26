@@ -615,6 +615,17 @@
             color: var(--secondary); /* Highlight TITAN RV in footer */
         }
 
+        .site-footer .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-footer .footer-link {
+            color: var(--secondary);
+            text-decoration: none;
+            margin-left: 1rem;
+        }
 
         /* --- Animations --- */
         @keyframes fadeInUp {
@@ -1064,9 +1075,11 @@
 
     <footer class="site-footer">
         <div class="container">
-             <p>&copy; 2025 <strong>TITAN RV</strong> | Bespoke Haul Truck Conversions</p>
-            <p>Engineering the Future of Self-Reliant Expedition Vehicles.</p>
+            <div class="footer-content">
+                <p>&copy; 2025 <strong>TITAN RV</strong> | Bespoke Haul Truck Conversions</p>
+                <a href="titan-rv-pitch-deck.html" target="_blank" rel="noopener" class="footer-link">View Our Pitch Deck</a>
             </div>
+        </div>
     </footer>
 
     <script>
