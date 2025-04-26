@@ -69,7 +69,7 @@ nav ul li a:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll; /* More reliable on mobile */
+    background-color: #222;
     color: #fff;
     text-align: center;
     padding: 150px 20px;
@@ -264,6 +264,14 @@ footer .container {
         gap: 15px;
     }
     
+    .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/ChatGPT-Image-Apr-12-2025-064914PM.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #222;
+    }
+    
     .hero h2 {
         font-size: 2rem;
     }
@@ -275,13 +283,5 @@ footer .container {
     .conversion, .feature {
         width: 100%;
         max-width: 400px;
-    }
-    
-    .hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/ChatGPT-Image-Apr-12-2025-064914PM.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
     }
 }
