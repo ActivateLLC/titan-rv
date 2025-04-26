@@ -68,6 +68,8 @@ nav ul li a:hover {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/ChatGPT Image Apr 12, 2025, 06_49_14 PM.png');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll; /* More reliable on mobile */
     color: #fff;
     text-align: center;
     padding: 150px 20px;
@@ -273,5 +275,13 @@ footer .container {
     .conversion, .feature {
         width: 100%;
         max-width: 400px;
+    }
+    
+    .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/ChatGPT Image Apr 12, 2025, 06_49_14 PM.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
     }
 }
