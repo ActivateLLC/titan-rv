@@ -727,6 +727,35 @@
         </div>
     </div>
 
+    <!-- Contact Section -->
+    <div id="contact" style="padding: 4rem 2rem; background: #232323; color: #fff; text-align: center;">
+      <h2>Contact Us / Investor Questionnaire</h2>
+      <form action="mailto:your@email.com" method="POST" enctype="text/plain" style="max-width: 500px; margin: 0 auto; text-align: left;">
+        <label for="name" style="display:block;margin-bottom:0.5em;">Name<span style="color:#E5C76B;">*</span></label>
+        <input type="text" id="name" name="name" required style="width:100%;padding:0.5em;margin-bottom:1em;">
+
+        <label for="email" style="display:block;margin-bottom:0.5em;">Email<span style="color:#E5C76B;">*</span></label>
+        <input type="email" id="email" name="email" required style="width:100%;padding:0.5em;margin-bottom:1em;">
+
+        <label for="organization" style="display:block;margin-bottom:0.5em;">Organization</label>
+        <input type="text" id="organization" name="organization" style="width:100%;padding:0.5em;margin-bottom:1em;">
+
+        <label for="interest" style="display:block;margin-bottom:0.5em;">Investment Interest</label>
+        <select id="interest" name="interest" style="width:100%;padding:0.5em;margin-bottom:1em;">
+          <option value="Equity">Equity Investment</option>
+          <option value="Partnership">Strategic Partnership</option>
+          <option value="Acquisition">Acquisition</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="message" style="display:block;margin-bottom:0.5em;">Message</label>
+        <textarea id="message" name="message" rows="4" style="width:100%;padding:0.5em;margin-bottom:1em;"></textarea>
+
+        <button type="submit" style="background:#E5C76B;color:#232323;padding:0.75em 2em;border:none;border-radius:5px;font-size:1.1em;cursor:pointer;">Submit</button>
+      </form>
+      <p style="margin-top:2em;color:#E5C76B;font-size:0.95em;">* Your information will be kept confidential and used only for partnership or investment follow-up.</p>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Handle navigation dots
