@@ -266,8 +266,8 @@ footer .container {
     
     .hero {
         background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/ChatGPT-Image-Apr-12-2025-064914PM.png');
-        background-size: cover;
-        background-position: center;
+        background-size: contain;
+        background-position: center top;
         background-repeat: no-repeat;
         background-color: #222;
     }
