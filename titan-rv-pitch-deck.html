@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITAN RV Pitch Deck</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --dark-charcoal: #1A1A1A;
+            --medium-charcoal: #2D2D2D;
+            --light-charcoal: #3D3D3D;
+            --gold: #D4AF37;
+            --gold-light: #E5C76B;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+        }
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-charcoal);
+            color: var(--white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            box-sizing: border-box;
+            scroll-snap-align: start;
+            border-bottom: 1px solid var(--light-charcoal);
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', 'Arial Black', sans-serif;
+            margin-top: 0;
+            color: var(--white);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.05em;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gold-light);
+        }
+        
+        p {
+            font-family: 'Georgia', serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        ul {
+            margin-bottom: 1.5rem;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        li {
+            font-family: 'Georgia', serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--gold);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            font-family: 'Georgia', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: var(--gold-light);
+        }
+        
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0.7) 100%);
+            z-index: 1;
+        }
+        
+        /* Two Column Layout */
+        .two-columns {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .column {
+            flex: 1;
+        }
+        
+        /* Card Styles */
+        .card {
+            background-color: var(--medium-charcoal);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Chart Styles */
+        .chart-container {
+            background-color: var(--medium-charcoal);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .bar-chart {
+            display: flex;
+            height: 300px;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 0 1rem;
+        }
+        
+        .bar {
+            width: 60px;
+            background: linear-gradient(to top, var(--gold), var(--gold-light));
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: height 1s ease-in-out;
+        }
+        
+        .bar-label {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: var(--gold);
+        }
+        
+        /* Competition Matrix */
+        .competition-matrix {
+            height: 400px;
+            position: relative;
+            background-color: var(--medium-charcoal);
+            border-radius: 8px;
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid var(--light-charcoal);
+        }
+        
+        .matrix-label-x {
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: var(--gold-light);
+        }
+        
+        .matrix-label-y {
+            position: absolute;
+            top: 50%;
+            left: -40px;
+            transform: rotate(-90deg) translateX(50%);
+            font-weight: bold;
+            color: var(--gold-light);
+            width: 100px;
+        }
+        
+        .competitor {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--light-charcoal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .competitor.titan {
+            background-color: var(--gold);
+            color: var(--dark-charcoal);
+            width: 80px;
+            height: 80px;
+            font-size: 1rem;
+            font-weight: 900;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold), var(--gold-light));
+            border-radius: 4px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.3rem;
+            top: 0.3rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--gold);
+            border: 3px solid var(--dark-charcoal);
+        }
+        
+        /* Logo */
+        .logo {
+            margin-bottom: 2rem;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+        }
+        
+        .logo span {
+            color: var(--white);
+        }
+        
+        /* Final Slide CTA */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--gold);
+            color: var(--dark-charcoal);
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--light-charcoal);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-dot:hover, .nav-dot.active {
+            background-color: var(--gold);
+            transform: scale(1.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .two-columns {
+                flex-direction: column;
+            }
+            
+            .nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Dots -->
+    <div class="nav">
+        <div class="nav-dot active" data-slide="1"></div>
+        <div class="nav-dot" data-slide="2"></div>
+        <div class="nav-dot" data-slide="3"></div>
+        <div class="nav-dot" data-slide="4"></div>
+        <div class="nav-dot" data-slide="5"></div>
+        <div class="nav-dot" data-slide="6"></div>
+        <div class="nav-dot" data-slide="7"></div>
+        <div class="nav-dot" data-slide="8"></div>
+        <div class="nav-dot" data-slide="9"></div>
+        <div class="nav-dot" data-slide="10"></div>
+    </div>
+
+    <!-- Slide 1: Title -->
+    <div class="slide" id="slide1">
+        <img src="/api/placeholder/1200/800" alt="placeholder" class="bg-image"/>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <div class="logo">TITAN <span>RV</span></div>
+            <h1>Redefining Expedition Luxury</h1>
+            <p class="subtitle">Transforming Industrial Mining Haul Trucks into Ultra-Luxury Expedition Vehicles</p>
+        </div>
+    </div>
+
+    <!-- Slide 2: Vision & Mission -->
+    <div class="slide" id="slide2">
+        <img src="/api/placeholder/1200/800" alt="placeholder" class="bg-image"/>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2>Vision & Mission</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="card">
+                        <h3>Vision</h3>
+                        <p>To redefine expedition luxury by creating the world's most capable and exclusive overland vehicles.</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <h3>Mission</h3>
+                        <p>Transform industrial mining haul trucks into bespoke expedition vehicles for ultra-high-net-worth individuals seeking unparalleled adventure capabilities.</p>
+                    </div>
+                </div>
+            </div>
+            <p>"The greatest luxury is not in what you own, but in the experiences you have." - Unknown</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: The Problem -->
+    <div class="slide" id="slide3">
+        <img src="/api/placeholder/1200/800" alt="placeholder" class="bg-image"/>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2>The Problem</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <ul>
+                        <li>Traditional luxury RVs and expedition vehicles face significant limitations in extreme terrain</li>
+                        <li>Ultra-high-net-worth adventurers desire truly unique vehicles that match their exceptional status</li>
+                        <li>Current expedition vehicle market lacks truly commanding presence and scale</li>
+                        <li>Global climate uncertainty creates demand for self-sufficient, go-anywhere vehicles</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <h3>Market Gap</h3>
+                        <p>The current luxury expedition vehicle market tops out at $3M, with limited capabilities and lacking true differentiation for the ultra-wealthy who want something nobody else has.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Our Solution -->
+    <div class="slide" id="slide4">
+        <img src="/api/placeholder/1200/800" alt="placeholder" class="bg-image"/>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2>Our Solution</h2>
+            <h3>TITAN RV: BelAZ 75710 Conversions</h3>
+            <div class="two-columns">
+                <div class="column">
+                    <ul>
+                        <li><span class="highlight">Unprecedented off-road capability</span> and ground clearance</li>
+                        <li><span class="highlight">Massive interior living space</span> (over 2,000 sq ft)</li>
+                        <li><span class="highlight">Complete self-sufficiency</span> with extended range</li>
+                        <li><span class="highlight">Bulletproof security</span> and disaster resilience</li>
+                        <li><span class="highlight">Exclusive, one-of-a-kind</span> status symbol</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <h3>The Ultimate Expedition Vehicle</h3>
+                        <p>By converting the world's largest mining haul truck into a luxury living space, we create a vehicle with capabilities that simply don't exist elsewhere in the market at any price point.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Target Market -->
+    <div class="slide" id="slide5">
+        <img src="/api/placeholder/1200/800" alt="placeholder" class="bg-image"/>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2>Target Market</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <h3>Primary Customers</h3>
+                    <ul>
+                        <li>Ultra-high-net-worth individuals ($100M+ net worth)</li>
+                        <li>Adventure-seeking billionaires and tech titans</li>
+                        <li>Luxury expedition companies</li>
+                        <li>Sovereign wealth funds and royal families</li>
+                        <li>Doomsday preppers with substantial resources</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <h3>Market Size</h3>
+                        <ul>
+                            <li>Global UHNWI population: 211,275 individuals</li>
+                            <li>Combined wealth: $29.7 trillion</li>
+                            <li>Luxury expedition vehicle market: $2.1 billion annually</li>
+                            <li>Annual growth rate: 8.3% CAGR</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Unique Value Proposition -->
+    <div class="slide" id="slide6">
+        <img src="/api/placeholder/1200/800" alt="placeholder" class="bg-image"/>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2>Unique Value Proposition</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="card">
+                        <h3>Exclusivity</h3>
+                        <p>Limited production of 2-3 vehicles per year</p>
+                    </div>
+                    <div class="card">
+                        <h3>Unmatched Capability</h3>
+                        <p>Go literally anywhere a road can be created</p>
+                    </div>
+                    <div class="card">
+                        <h3>Ultimate Status</h3>
+                        <p>Nothing else on Earth compares in presence or scale</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <h3>Self-Sufficiency</h3>
+                        <p>Extended off-grid living with every luxury</p>
+                    </div>
+                    <div class="card">
+                        <h3>Legacy Creation</h3>
+                        <p>A truly unique asset that can be passed down generations</p>
+                    </div>
+                    <div class="card">
+                        <h3>Experience</h3>
+                        <p>Not just a vehicle, but a lifestyle transformation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Business Model -->
+    <div class="slide" id="slide7">
+        <img src="/api/placeholder/1200/800" alt="placeholder" class="bg-image"/>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2>Business Model</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <h3>Revenue Streams</h3>
+                    <ul>
+                        <li>Base conversion: $5-12 million per vehicle</li>
+                        <li>Customization packages: $1-5 million per vehicle</li>
+                        <li>Annual maintenance contracts: $250,000-500,000</li>
+                        <li>Digital twins and VR experiences: $100,000-250,000</li>
+                        <li>Expedition planning services: $50,000-150,000 per expedition</li>
+                        <li>Membership program: $25,000 annual fee</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <h3>Margins</h3>
+                        <ul>
+                            <li>30-40% gross margin on vehicle conversions</li>
+                            <li>60-70% margins on digital services and memberships</li>
+                        </ul>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Revenue Projection</h3>
+                        <div class="bar-chart">
+                            <div class="bar" style="height: 60px;">
+                                <div class="bar-value">$9M</div>
+                                <div class="bar-label">Year 1</div>
+                            </div>
+                            <div class="bar" style="height: 120px;">
+                                <div class="bar-value">$18M</div>
+                                <div class="bar-label">Year 2</div>
+                            </div>
+                            <div class="bar" style="height: 200px;">
+                                <div class="bar-value">$30M</div>
+                                <div class="bar-label">Year 3</div>
+                            </div>
+                            <div class="bar" style="height: 240px;">
+                                <div class="bar-value">$42M</div>
+                                <div class="bar-label">Year 4</div>
+                            </div>
+                            <div class="bar" style="height: 280px;">
+                                <div class="bar-value">$62M</div>
+                                <div class="bar-label">Year 5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Technology Platform -->
+    <div class="slide" id="slide8">
+        <img src="/api/placeholder/1200/800" alt="placeholder" class="bg-image"/>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2>Technology Platform</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <h3>Integrated Systems</h3>
+                    <ul>
+                        <li><span class="highlight">ERPNext:</span> Inventory, purchasing, and financial management</li>
+                        <li><span class="highlight">SuiteCRM:</span> Ultra-high-net-worth client relationship management</li>
+                        <li><span class="highlight">OpenProject:</span> Custom conversion project management</li>
+                        <li><span class="highlight">Spree/Bagisto:</span> E-commerce for digital products and subscriptions</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <h3>Custom Services</h3>
+                        <ul>
+                            <li>Authentication Service</li>
+                            <li>Notification Service</li>
+                            <li>Reporting Service</li>
+                            <li>Unified Frontend</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Technical Advantages</h3>
+                        <p>End-to-end digital management of the entire customer journey with seamless integration across all business functions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Competitive Landscape -->
+    <div class="slide" id="slide9">
+        <img src="/api/placeholder/1200/800" alt="placeholder" class="bg-image"/>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2>Competitive Landscape</h2>
+            <div class="competition-matrix">
+                <div class="matrix-label-x">PRICE</div>
+                <div class="matrix-label-y">CAPABILITY</div>
+                
+                <!-- Competitors -->
+                <div class="competitor" style="bottom: 20%; left: 30%;">Newell</div>
+                <div class="competitor" style="bottom: 25%; left: 35%;">Prevost</div>
+                <div class="competitor" style="bottom: 40%; left: 25%;">EarthRoamer</div>
+                <div class="competitor" style="bottom: 45%; left: 40%;">Action Mobil</div>
+                <div class="competitor" style="bottom: 50%; left: 45%;">KiraVan</div>
+                
+                <!-- TITAN RV -->
+                <div class="competitor titan" style="bottom: 80%; left: 80%;">TITAN RV</div>
+            </div>
+            
+            <div class="two-columns">
+                <div class="column">
+                    <div class="card">
+                        <h3>Traditional Luxury RVs</h3>
+                        <ul>
+                            <li>Newell Coach ($2M)</li>
+                            <li>Prevost Motorhomes ($3M)</li>
+                            <li>Marathon Coach ($2.5M)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card">
+                        <h3>Expedition Vehicles</h3>
+                        <ul>
+                            <li>EarthRoamer ($1.7M)</li>
+                            <li>Action Mobil Global XRS 7200 ($1.5M)</li>
+                            <li>KiraVan ($3M)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Investment Opportunity -->
+    <div class="slide" id="slide10">
+        <img src="/api/placeholder/1200/800" alt="placeholder" class="bg-image"/>
+        <div class="overlay"></div>
+        <div class="slide-content">
+            <h2>Investment Opportunity</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <h3>Current Valuation Factors</h3>
+                    <ul>
+                        <li>Proprietary technology platform (partially completed)</li>
+                        <li>Unique business concept with global appeal</li>
+                        <li>Established relationships with key suppliers</li>
+                        <li>Website and brand foundation</li>
+                        <li>Detailed conversion plans and specifications</li>
+                        <li>Untapped ultra-luxury expedition vehicle market</li>
+                    </ul>
+                    <div class="card">
+                        <h3>Seeking</h3>
+                        <p>Strategic acquisition partner</p>
+                        <p>Valuation range: <span class="highlight">$500K-$2M</span></p>
+                    </div>
+                </div>
+                <div class="column">
+                    <h3>Ideal Partner Brings</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3>Access to UHNWI Networks</h3>
+                            <p>Direct connections to potential customers</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Luxury Vehicle Experience</h3>
+                            <p>Knowledge of high-end vehicle market</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Technical Expertise</h3>
+                            <p>Skills in vehicle conversion and engineering</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Capital</h3>
+                            <p>Funding for rapid market entry</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="cta-button">Contact Us for Partnership Opportunities</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle navigation dots
+            const navDots = document.querySelectorAll('.nav-dot');
+            const slides = document.querySelectorAll('.slide');
+            
+            navDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    slides[index].scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            
+            // Update active dot on scroll
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+                
+                slides.forEach((slide, index) => {
+                    const slideTop = slide.offsetTop;
+                    const slideHeight = slide.offsetHeight;
+                    
+                    if (scrollPosition >= slideTop - slideHeight / 3 && 
+                        scrollPosition < slideTop + slideHeight - slideHeight / 3) {
+                        navDots.forEach(dot => dot.classList.remove('active'));
+                        navDots[index].classList.add('active');
+                    }
+                });
+            });
+            
+            // Animate bars on scroll
+            const barChart = document.querySelector('.bar-chart');
+            if (barChart) {
+                const bars = barChart.querySelectorAll('.bar');
+                const originalHeights = Array.from(bars).map(bar => bar.style.height);
+                
+                // Initially set height to 0
+                bars.forEach(bar => {
+                    bar.style.height = '0';
+                });
+                
+                // Animate when the chart comes into view
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            bars.forEach((bar, index) => {
+                                setTimeout(() => {
+                                    bar.style.height = originalHeights[index];
+                                }, index * 200);
+                            });
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(barChart);
+            }
+        });
+    </script>
+</body>
+</html>
