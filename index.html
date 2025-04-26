@@ -184,7 +184,7 @@
         /* --- Hero Section --- */
         .hero {
             min-height: 90vh; /* Slightly taller */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('ChatGPT Image Apr 12, 2025, 06_49_14 PM.png'); /* Overlay using gradient */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/ChatGPT Image Apr 12, 2025, 06_49_14 PM.png'); /* Overlay using gradient */
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Parallax effect */
@@ -697,15 +697,14 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                 ☰ </button>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         </nav>
     </header>
 
-    <main> <section class="hero" id="home">
-            <div class="hero-content">
-                <h1>Forge Your Fortress</h1> <p>Pioneering the conversion of industrial titans into the ultimate self-reliant luxury expedition vehicles.</p>
-                <a href="#packages" class="cta-button">Discover Your Titan</a>
+    <main> <section class="hero" id="home" data-component-name="<section />" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/ChatGPT Image Apr 12, 2025, 06_49_14 PM.png'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <div class="hero-content" data-component-name="<div />">
+                <h1 data-component-name="<h1 />">Forge Your Fortress</h1> <p data-component-name="<p />">Pioneering the conversion of industrial titans into the ultimate self-reliant luxury expedition vehicles.</p>
+                <a href="#packages" class="cta-button" data-component-name="<a />">Discover Your Titan</a>
             </div>
         </section>
 
@@ -1118,6 +1117,27 @@
                  fadeElements.forEach(el => el.classList.add('is-visible'));
             }
 
+            // Smooth scroll and hide hash for SPA navigation
+            (function() {
+                const navLinks = document.querySelectorAll('.nav-links a, .cta-button');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        const href = this.getAttribute('href');
+                        if (href.startsWith('#')) {
+                            e.preventDefault();
+                            const target = document.querySelector(href);
+                            if (target) {
+                                window.scrollTo({
+                                    top: target.offsetTop - 80,
+                                    behavior: 'smooth'
+                                });
+                                // Hide hash in URL
+                                history.replaceState(null, '', window.location.pathname);
+                            }
+                        }
+                    });
+                });
+            })();
         });
     </script>
 
